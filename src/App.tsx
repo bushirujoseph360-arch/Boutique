@@ -42,13 +42,6 @@ const COLLECTIONS = [
     price: "Sur mesure",
     image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=1000",
   },
-  {
-    id: 3,
-    title: "Héritage",
-    category: "Tenues Traditionnelles",
-    price: "Sur mesure",
-    image: "https://images.unsplash.com/photo-1572804013307-a75939c603fc?auto=format&fit=crop&q=80&w=1000",
-  },
 ];
 
 export default function App() {
