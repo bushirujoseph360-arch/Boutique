@@ -269,6 +269,32 @@ export default function App() {
           </div>
         </section>
 
+        {/* Derrière la Création (Brand Story) */}
+        <section id="story" className="px-6 md:px-16 container mx-auto">
+          <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
+            <div className="w-full lg:w-1/2">
+               <div className="relative aspect-[16/9] overflow-hidden border border-ink/5 group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=1200" 
+                    alt="Atelier Story" 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-terracotta/10 mix-blend-overlay"></div>
+               </div>
+            </div>
+            <div className="w-full lg:w-1/2 space-y-8">
+               <span className="text-[10px] uppercase tracking-[0.4em] font-sans font-extrabold text-terracotta">L'Esprit de la Maison</span>
+               <h2 className="text-4xl italic font-light leading-tight">Derrière chaque Création, <br /> une Âme Voyageuse</h2>
+               <p className="text-sm font-sans text-ink/60 leading-relaxed font-medium">
+                 Née de la passion pour le textile brut et les silhouettes architecturales, NAHE n'est pas seulement une boutique, c'est un sanctuaire où l'histoire se tisse. Chaque point de couture est un hommage aux mères qui nous ont transmis le secret des fibres, et chaque coupe moderne est un regard tourné vers l'avenir de la mode africaine.
+               </p>
+               <div className="pt-4">
+                  <a href="#about" className="text-[10px] uppercase tracking-[0.3em] font-sans font-bold text-ink border-b border-terracotta pb-1 hover:text-terracotta transition-colors">Notre Histoire Complète</a>
+               </div>
+            </div>
+          </div>
+        </section>
+
         {/* L'Atelier (About) */}
         <section id="about" className="bg-soft-bg/30 py-24 px-6 md:px-16 border-b border-ink/5 relative">
           <div className="absolute inset-0 pattern-kuba opacity-[0.02] pointer-events-none"></div>
@@ -384,8 +410,23 @@ export default function App() {
         </div>
 
         <div className="flex items-center gap-6">
-          <span className="text-[9px] uppercase tracking-[0.25em] font-sans font-bold opacity-40">Atelier Virtuel</span>
-          <div className="w-24 md:w-40 h-[1px] bg-ink/10"></div>
+          <span className="text-[9px] uppercase tracking-[0.25em] font-sans font-bold opacity-40">Suivez-nous</span>
+          <div className="w-12 md:w-24 h-[1px] bg-ink/10"></div>
+          <a 
+            href="https://instagram.com/nahe_haute_couture" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 group"
+          >
+            <motion.div 
+              whileHover={{ scale: 1.1, color: '#8B4513' }}
+              className="w-10 h-10 flex items-center justify-center border border-ink/10 rounded-full cursor-pointer hover:border-terracotta bg-white shadow-sm transition-colors text-ink"
+            >
+               <Instagram className="w-4 h-4" />
+            </motion.div>
+            <span className="text-[9px] uppercase tracking-widest font-sans font-bold opacity-0 group-hover:opacity-40 transition-opacity hidden md:block">@NAHE_COUTURE</span>
+          </a>
+          <div className="w-8 md:w-16 h-[1px] bg-ink/10"></div>
           <motion.div 
             whileHover={{ rotate: 180, scale: 1.2 }}
             className="w-10 h-10 flex items-center justify-center border border-ink/10 rounded-full cursor-pointer hover:border-terracotta group shadow-sm bg-white"
