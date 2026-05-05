@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isEmailVerified() {
+      return request.auth.token.email_verified == true;
+    }
+
+    function isAdmin() {
+      return request.auth != null && 
+             request.auth.token.email_verified == true && 
+             request.auth.token.email == 'bushirujoseph360@gmail.com';
+    }
+
+    function isValidProduct(data) {
+      return data.title is string && data.title.size() <= 200 &&
+             data.category is string && data.category.size() <= 100 &&
+             data.price is string && data.price.size() <= 100 &&
+             data.image is string && data.image.size() <= 2000 &&
+             data.shopifyUrl is string && data.shopifyUrl.size() <= 2000;
+    }
+
+    // Products collection
+    match /products/{productId} {
+      allow read: if true;
+      allow create: if isAdmin() && 
+                      isValidProduct(request.resource.data) &&
+                      request.resource.data.createdAt == request.time;
+      allow update: if isAdmin() && 
+                      isValidProduct(request.resource.data) &&
+                      request.resource.data.updatedAt == request.time &&
+                      request.resource.data.createdAt == resource.data.createdAt;
+      allow delete: if isAdmin();
+    }
+
+    // Site settings
+    match /settings/{settingsId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Connection test
+    match /test/connection {
+      allow read: if true;
+    }
+  }
+}
+

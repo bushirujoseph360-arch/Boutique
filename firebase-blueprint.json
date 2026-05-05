@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A garment or piece in the boutique collection",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "string" },
+        "image": { "type": "string", "format": "uri" },
+        "shopifyUrl": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "price", "image", "shopifyUrl"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "General brand information and app content",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "storyTitle": { "type": "string" },
+        "storyText": { "type": "string" },
+        "aboutTitle": { "type": "string" },
+        "aboutText": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "apkUrl": { "type": "string", "format": "uri" }
+      }
+    }
+  },
+  "firestore": {
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of boutique products"
+    },
+    "settings/{settingsId}": {
+      "schema": "SiteSettings",
+      "description": "Global site configuration (usually one document named 'main')"
+    }
+  }
+}
